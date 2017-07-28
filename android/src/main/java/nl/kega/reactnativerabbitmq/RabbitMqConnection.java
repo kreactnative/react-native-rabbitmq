@@ -132,6 +132,14 @@ class RabbitMqConnection extends ReactContextBaseJavaModule  {
                     this.channel = connection.createChannel();
                     this.channel.basicQos(1);
 
+                    try {
+                        // byte[] messageBodyBytes = "Hello, world!".getBytes();
+                        // this.channel.basicPublish("react-native-exchange", "react-native-queue", null, messageBodyBytes);
+                    } catch (Exception e){
+
+                        //Log.e("RabbitMqConnectionChannel", "Create channel error " + e);
+                        //e.printStackTrace();
+                    }
                     WritableMap event = Arguments.createMap();
                     event.putString("name", "connected");
 
@@ -201,20 +209,20 @@ class RabbitMqConnection extends ReactContextBaseJavaModule  {
     public void removeQueue() {
       
     }
-    /*
+
     @ReactMethod
     public void publishToQueue(String message, String exchange_name, String routing_key) {
 
         for (RabbitMqQueue queue : queues) {
-		    if (Objects.equals(exchange_name, queue.exchange_name)){
+		    //if (Objects.equals(routing_key, queue.routing_key)){
                 Log.e("RabbitMqConnection", "publish " + message);
-                queue.publish(message, exchange_name);
-                return;
-            }
+                queue.publish(message, exchange_name, routing_key);
+                //return;
+            //}
 		}
 
     }
-    */
+
 
     @ReactMethod
     public void addExchange(ReadableMap exchange_condig) {
