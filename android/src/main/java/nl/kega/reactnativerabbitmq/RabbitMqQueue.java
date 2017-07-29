@@ -91,21 +91,23 @@ public class RabbitMqQueue {
             e.printStackTrace();
         }
     }
-    /*
-    public void publish(String message, String routing_key){ 
+
+    public void publish(String message, String exchange_name, String routing_key){
         try {
             byte[] message_body_bytes = message.getBytes();
 
             AMQP.BasicProperties properties = new AMQP.BasicProperties();
             //properties.setExpiration("60000");
        
-            this.channel.basicPublish(this.exchange_name, routing_key, properties, message_body_bytes);
+            //this.channel.basicPublish("", routing_key, properties, message_body_bytes);
+            //this.channel.basicPublish("react-native-exchange", "react-native-queue", null, message_body_bytes);
+            this.channel.basicPublish(exchange_name, routing_key, null, message_body_bytes);
         } catch (Exception e){
             Log.e("RabbitMqQueue", "Queue publish error " + e);
             e.printStackTrace();
         }
     }
-    */
+
     public void purge(){ 
         try {
             //this.channel.queuePurge(this.name, true); 

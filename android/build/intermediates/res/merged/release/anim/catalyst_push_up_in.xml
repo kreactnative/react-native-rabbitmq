@@ -11,4 +11,3 @@
           android:duration="@android:integer/config_shortAnimTime"
           />
 </set>
-<!-- From: file:/C:/GitHub/rnapp/node_modules/react-native-rabbitmq/android/build/intermediates/exploded-aar/com.facebook.react/react-native/0.35.0/res/anim/catalyst_push_up_in.xml -->
